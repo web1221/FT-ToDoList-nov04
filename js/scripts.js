@@ -42,15 +42,15 @@ $(document).ready(function (){
 
     for(var i = 0; i < myToDoList.tasks.length; i++){
       console.log(myToDoList.tasks);
-      // <h3 id="0">
-      $('.listResult').append('<h3 id="' + [i] +'">' + myToDoList.tasks[i].item + '</h3>');
+
+      $('.listResult').append('<h3 id="' + [i] +'">' + myToDoList.tasks[i].item + '</h3>');//the id etc. within the h3 tag allows us to create an indexed value that we can call with the click function.
       $('.listResult').append('<li>' + myToDoList.tasks[i].due + '</li>');
       $('.listResult').append('<li>' + myToDoList.tasks[i].start + '</li>');
       $('.listResult').append('<li>' + myToDoList.tasks[i].notes + '</li>');
       console.log(myToDoList.tasks[i].due);
     };
     alert('passed loop');
-    $('h3#0').click(function(){
+    $('h3#0').click(function(){//this is where the value id shows up and connects to the h3 tag
       $('li').toggle();
     });
 

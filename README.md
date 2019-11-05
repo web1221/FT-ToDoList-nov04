@@ -1,4 +1,4 @@
-# Places Traveled
+# To Do List
 
 ## Created by Angela Weber and Lara Bjork on November 4, 2019
 
@@ -24,7 +24,7 @@ Spec: The program will allow user to check off items that are completed.
 * Input: Click on checkbox in front of item that is completed.
 * Output: Item is highlighted in some way (like strikethrough all text).
 
-THE PROGRAM WILL ALSO REMOVE ITEM FROM THE LIST WHEN DONE - BUT WE'RE WORKING ON THAT.
+(The program does not address the assignment's objective of crossing off completed tasks.)
 
 
 
