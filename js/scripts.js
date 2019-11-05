@@ -22,17 +22,11 @@ function Task(item, due, start, notes) {
   this.notes = notes
 }
 
-// for(var i = 0; i <= myToDoList.tasks.length; i++){
-//   $('.listItems').append('<li>' + myToDoList.tasks[i] + '</li>');
-// }
-//
-// $('.listItems').append('<li>' + "Due date: " + myToDoList.tasks[0].due + ", Start date: " + myToDoList.tasks[0].start + ", Notes: " + myToDoList.tasks[0].notes + '</li>');
 
 
 //User logic starts here
 $(document).ready(function (){
   var myToDoList = new ToDoList();
-  // $('.listItems').text("")
 
   $("form#form").submit(function(event){
     event.preventDefault();
@@ -44,16 +38,21 @@ $(document).ready(function (){
     var myTask = new Task(itemInput, dueInput, startInput, notesInput);
     myToDoList.addTask(myTask);
 
+    $('.listResult').text("");
 
-    for(var i = 0; i <= myToDoList.tasks.length; i++){
-      $('.listResult').append('<h3>' + myToDoList.tasks[i].item + '</h3>');
+    for(var i = 0; i < myToDoList.tasks.length; i++){
+      console.log(myToDoList.tasks);
+      // <h3 id="0">
+      $('.listResult').append('<h3 id="' + [i] +'">' + myToDoList.tasks[i].item + '</h3>');
       $('.listResult').append('<li>' + myToDoList.tasks[i].due + '</li>');
       $('.listResult').append('<li>' + myToDoList.tasks[i].start + '</li>');
       $('.listResult').append('<li>' + myToDoList.tasks[i].notes + '</li>');
-      console.log(myToDoList.tasks[i].item);
       console.log(myToDoList.tasks[i].due);
     };
     alert('passed loop');
+    $('h3#0').click(function(){
+      $('li').toggle();
+    });
 
       console.log(myToDoList);
       console.log(myTask);
