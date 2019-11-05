@@ -1,10 +1,17 @@
 //business logic starts here
 function ToDoList(){
   this.tasks = []
+  this.currentId = 0
 }
 
 ToDoList.prototype.addTask = function(task) {
+  task.id = this.assignId();
   this.tasks.push(task);
+}
+
+ToDoList.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
 }
 
 
@@ -15,10 +22,18 @@ function Task(item, due, start, notes) {
   this.notes = notes
 }
 
+// for(var i = 0; i <= myToDoList.tasks.length; i++){
+//   $('.listItems').append('<li>' + myToDoList.tasks[i] + '</li>');
+// }
+//
+// $('.listItems').append('<li>' + "Due date: " + myToDoList.tasks[0].due + ", Start date: " + myToDoList.tasks[0].start + ", Notes: " + myToDoList.tasks[0].notes + '</li>');
 
 
 //User logic starts here
 $(document).ready(function (){
+  var myToDoList = new ToDoList();
+  // $('.listItems').text("")
+
   $("form#form").submit(function(event){
     event.preventDefault();
     var itemInput = $('input#item').val();
@@ -27,16 +42,21 @@ $(document).ready(function (){
     var notesInput = $('input#notes').val();
 
     var myTask = new Task(itemInput, dueInput, startInput, notesInput);
-    var myToDoList = new ToDoList();
     myToDoList.addTask(myTask);
 
-    $('.listItems').append('<h3>' + myToDoList.tasks[0].item + '</h3>');
 
-    $('h3').click(function(){
-        $('.listItems').append('<li>' + "Due date: " + myToDoList.tasks[0].due + ", Start date: " + myToDoList.tasks[0].start + ", Notes: " + myToDoList.tasks[0].notes + '</li>');
-      });
+    for(var i = 0; i <= myToDoList.tasks.length; i++){
+      $('.listResult').append('<h3>' + myToDoList.tasks[i].item + '</h3>');
+      $('.listResult').append('<li>' + myToDoList.tasks[i].due + '</li>');
+      $('.listResult').append('<li>' + myToDoList.tasks[i].start + '</li>');
+      $('.listResult').append('<li>' + myToDoList.tasks[i].notes + '</li>');
+      console.log(myToDoList.tasks[i].item);
+      console.log(myToDoList.tasks[i].due);
+    };
+    alert('passed loop');
+
+      console.log(myToDoList);
+      console.log(myTask);
+      console.log(itemInput, dueInput, startInput, notesInput);
     });
-    // console.log(myToDoList);
-    // console.log(myTask);
-    // console.log(itemInput, dueInput, startInput, notesInput);
 });
